@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Explorer</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!--Cookie popup-->
+<div class="col-sm-6 col-md-8">
+    <div class="popup">
+        <h1><i class='bx bx-cookie'></i>Cookies Consent</h1>
+        <p>This website use cookies to help you have more relevant browsing experience on the website.</p>
+        <div class="buttons">
+            <button class="button"id="Accept">Accept</button>
+            <button class="button" id="Decline">Decline</button>
+        </div>
+    </div>
+</div>
+    <!-- Header with Navigation -->
+    <header class="main">
+        <div class="container">
+            <div class="logo"><i class='bx bxs-plane-take-off'></i><span style="margin-left: 10px;">World Explorer</span></div>
+            
+        </div>
+    </header>
+    
+<!-- Hero Section -->
+  <section class="hero">
+ <div class="video-background">
+        <video src="img/country.mp4" autoplay muted loop playsinline></video>
+    </div>
+    <div class="container">
+        <h1>Discover the World's Most Beautiful Destinations</h1>
+        <p>Explore fascinating cultures, breathtaking landscapes, and unforgettable experiences across the globe.</p>
+        <a href="#countries" class="btn">Explore Countries</a>
+    </div>
+</section> 
+
+
+    <!-- Countries Section -->
+    <section id="countries" class="countries">
+        <div class="container">
+            <h2 class="section-title">Explore Countries</h2>
+            <div class="countries-grid">
+                <!-- France -->
+                <div class="country-card">
+                    <img src="img/France.jpeg" alt="France" class="country-img">
+                    <div class="card-content">
+                        <h3 class="country-name">France</h3>
+                        <p class="country-desc">Stroll through Parisian streets, indulge in fine wine and cheese, and explore timeless art and architecture.</p>
+                        <button class="explore-btn" id="explore-France">Explore France</button>
+                    </div>
+                </div>
+                
+                <!-- Italy -->
+                <div class="country-card">
+                    <img src="img/Italy.jpeg" alt="Italy" class="country-img">
+                    <div class="card-content">
+                        <h3 class="country-name">Italy</h3>
+                        <p class="country-desc">Experience the rich history, mouth-watering cuisine, and breathtaking art in this Mediterranean paradise.</p>
+                        <button class="explore-btn"id="explore-Italy">Explore Italy</button>
+                    </div>
+                </div>
+                
+                <!-- Spain -->
+                <div class="country-card">
+                    <img src="img/Spain.jpeg" alt="Spain" class="country-img">
+                    <div class="card-content">
+                        <h3 class="country-name">Spain</h3>
+                        <p class="country-desc">Discover lively festivals, stunning beaches, and the rich cultural heritage of this vibrant Iberian nation.</p>
+                        <button class="explore-btn"id="explore-Spain">Explore Spain</button>
+                    </div>
+                </div>
+                
+                <!-- US -->
+                <div class="country-card">
+                    <img src="img/US.jpeg" alt="US" class="country-img">
+                    <div class="card-content">
+                        <h3 class="country-name">United State</h3>
+                        <p class="country-desc">From bustling cities to national parks, explore the diverse landscapes and cultures of the USA.</p>
+                        <button class="explore-btn"id="explore-US">Explore United State</button>
+                    </div>
+                </div>
+                
+                <!-- China -->
+                <div class="country-card">
+                    <img src="img/china.jpeg" alt="China" class="country-img">
+                    <div class="card-content">
+                        <h3 class="country-name">China</h3>
+                        <p class="country-desc">Walk the Great Wall, savor traditional cuisine, and uncover thousands of years of history in China.</p>
+                        <button class="explore-btn"id="explore-China">Explore China</button>
+                    </div>
+                </div>
+
+                <!-- Japan -->
+                <div class="country-card">
+                    <img src="img/japan.jpeg" alt="Japan" class="country-img">
+                    <div class="card-content">
+                        <h3 class="country-name">Japan</h3>
+                        <p class="country-desc">Experience the beauty of cherry blossoms, ancient temples, and vibrant cityscapes in Japan.</p>
+                        <button class="explore-btn"id="explore-Japan">Explore Japan</button>
+                    </div>
+                </div>
+
+                <!-- Thailand -->
+                <div class="country-card">
+                    <img src="img/thailand.jpeg" alt="Thailand" class="country-img">
+                    <div class="card-content">
+                        <h3 class="country-name">Thailand</h3>
+                        <p class="country-desc">Enjoy stunning beaches, flavorful street food, and rich cultural heritage in Thailand.</p>
+                        <button class="explore-btn"id="explore-Thailand">Explore Thailand</button>
+                    </div>
+                </div>
+
+                <!-- Malaysia -->
+                <div class="country-card">
+                    <img src="img/malaysia.jpeg" alt="Malaysia" class="country-img">
+                    <div class="card-content">
+                        <h3 class="country-name">Malaysia</h3>
+                        <p class="country-desc">Discover the fusion of cultures, breathtaking rainforests, and vibrant cities in Malaysia.</p>
+                        <button class="explore-btn"id="explore-Malaysia">Explore Malaysia</button>
+                    </div>
+                </div>
+                
+              
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscribe form section -->
+    <div class="subscribe-section">
+        <h3>Subscribe to our Mailing List!</h3>
+        <form id="subscribeForm">
+            <input type="email" id="emailInput" name="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+
+
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-icons">
+                <a href="https://www.facebook.com/"><i class='bx bxl-facebook-square'></i></a>
+                <a href="https://www.twitter.com/"><i class='bx bxl-twitter' ></i></i></a>
+                <a href="https://www.instagram.com/"><i class='bx bxl-instagram-alt' ></i></a>
+            </div>
+            <div class="footer-links">
+            
+              
+            </div>
+            <p class="copyright">&copy 2025 World Explorer. All rights reserved.</p>
+            <div class="phonenum"><i class='bx bxs-phone'></i>  012-346567</div>
+        </div>
+    </footer>
+    <script src="Jquery/jquery-3.7.1.js"></script> <!-- jquery -->
+     <script src="index.js"></script>       
+</body>
+</html>

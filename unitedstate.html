@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore USA - Top Destination</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const viewAttractionsBtn = document.getElementById('view-attractions');
+            const aboutUSABtn = document.getElementById('about-usa');
+
+            if (viewAttractionsBtn) {
+                viewAttractionsBtn.addEventListener('click', function () {
+                    const sectionTitles = document.querySelectorAll('h2.section-title');
+                    let topAttractionsHeading = Array.from(sectionTitles).find(h => h.textContent.includes('Top Attractions'));
+                    if (topAttractionsHeading) {
+                        const position = topAttractionsHeading.getBoundingClientRect().top + window.pageYOffset - 65;
+                        window.scrollTo({ top: position, behavior: 'smooth' });
+                    }
+                });
+            }
+
+            if (aboutUSABtn) {
+                aboutUSABtn.addEventListener('click', function () {
+                    const descriptionSection = document.getElementById('usa-description');
+                    if (descriptionSection) {
+                        const position = descriptionSection.getBoundingClientRect().top + window.pageYOffset - 100;
+                        window.scrollTo({ top: position, behavior: 'smooth' });
+                    }
+                });
+            }
+
+            document.querySelectorAll('.destination-card').forEach(card => {
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', function () {
+                    const id = this.getAttribute('data-id');
+                    const title = this.getAttribute('data-title');
+                    const description = this.getAttribute('data-description');
+                    let mapImage = `Country/USA/${id}-location.png`;
+
+                    const newWindow = window.open('', id, `width=600,height=500,left=${(screen.width - 600) / 2},top=${(screen.height - 500) / 2},resizable=yes,scrollbars=yes`);
+                    newWindow.document.write(`
+                        <html><head>
+                        <title>${title}</title>
+                        <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css' rel='stylesheet'>
+                        <link rel='stylesheet' href='style.css'>
+                        <style>
+                            body { padding: 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+                            .map-container { width: 100%; height: 300px; border-radius: 8px; overflow: hidden; margin-top: 20px; }
+                            .map-container img { width: 100%; height: 100%; object-fit: cover; }
+                            h1 { color: var(--primary-color, #003F87); margin-bottom: 16px; }
+                            p { font-size: 16px; line-height: 1.6; margin-bottom: 20px; }
+                        </style>
+                        </head><body>
+                        <div class='container'>
+                            <h1>${title}</h1>
+                            <p>${description}</p>
+                            <div class='map-container'><img src='${mapImage}' alt='${title} Map'></div>
+                        </div></body></html>
+                    `);
+                    newWindow.document.close();
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">World Explorer</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="countriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Countries
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="countriesDropdown">
+                            <li><a class="dropdown-item" href="france.html">France</a></li>
+                            <li><a class="dropdown-item" href="spain.html">Spain</a></li>
+                            <li><a class="dropdown-item active" href="unitedstate.html">United States</a></li>
+                            <li><a class="dropdown-item" href="italy.html">Italy</a></li>
+                            <li><a class="dropdown-item" href="china.html">China</a></li>
+                            <li><a class="dropdown-item" href="japan.html">Japan</a></li>
+                            <li><a class="dropdown-item" href="thailand.html">Thailand</a></li>
+                            <li><a class="dropdown-item" href="malaysia.html">Malaysia</a></li>
+                        </ul>
+                    </li>
+                    
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="country-section" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('Country/USA/usa.png');">
+        <div class="container hero-text">
+            <h1>Discover USA</h1>
+            <p>Explore the land of diversity, from bustling metropolises to breathtaking natural wonders.</p>
+            <div class="d-flex justify-content-center gap-3 mt-4">
+                <button class="btn btn-light btn-lg" id="about-usa">About USA</button>
+                <button class="btn btn-light btn-lg" id="view-attractions">View Attractions</button>
+            </div>
+        </div>
+    </section>
+
+    <!--Description-->
+    <section class="container my-5" id="usa-description">
+        <h2 class="section-title">About USA</h2>
+        <div class="row align-items-center mt-4">
+            <div class="col-md-6">
+                <p class="lead">The United States, spanning a vast territory in North America, is renowned for its cultural diversity, technological innovation, and breathtaking natural landscapes. From the skyscrapers of New York City to the beaches of California, and from the Grand Canyon to the Great Lakes, the USA offers an incredible diversity of experiences.</p>
+                <p>As one of the world's most visited countries, the USA boasts iconic landmarks like the Statue of Liberty, the Golden Gate Bridge, and the Grand Canyon. Its 50 states each have distinct identities, landscapes, and attractions, making every visit unique.</p>
+                <p>American culture has profoundly influenced entertainment, technology, cuisine, and business worldwide. The country is home to 24 UNESCO World Heritage Sites and features some of the world's most famous national parks, museums, and entertainment venues.</p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="Country/USA/usa-map.png" alt="Map of USA" class="img-fluid rounded shadow-sm" style="max-height: 350px;">
+                <p class="text-muted small">The map of the United States and its 50 states</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Attractions -->
+    <section class="container my-5">
+        <h2 class="section-title">Top Attractions</h2>
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="destination-card" data-id="grand-canyon" data-title="Grand Canyon" data-description="One of the world's natural wonders, this massive canyon carved by the Colorado River offers breathtaking vistas and hiking opportunities." data-map="Country/USA/grand-canyon-location.png">
+                    <img src="Country/USA/grand-canyon.png" alt="Grand Canyon" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Grand Canyon</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="destination-card" data-id="statue-of-liberty" data-title="Statue of Liberty" data-description="This iconic symbol of freedom and democracy stands tall in New York Harbor, welcoming visitors to the United States." data-map="Country/USA/statue-of-liberty-location.png">
+                    <img src="Country/USA/statue-of-liberty.png" alt="Statue of Liberty" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Statue of Liberty</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="destination-card" data-id="yellowstone" data-title="Yellowstone National Park" data-description="America's first national park features spectacular geysers, hot springs, wildlife, and diverse ecosystems." data-map="Country/USA/yellowstone-location.png">
+                    <img src="Country/USA/yellowstone.png" alt="Yellowstone National Park" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Yellowstone National Park</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="destination-card" data-id="las-vegas" data-title="Las Vegas Strip" data-description="The world-famous entertainment district known for its vibrant casinos, shows, restaurants, and nightlife." data-map="Country/USA/las-vegas-location.png">
+                    <img src="Country/USA/las-vegas.png" alt="Las Vegas Strip" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Las Vegas Strip</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="destination-card" data-id="disney-world" data-title="Walt Disney World" data-description="The iconic entertainment complex in Orlando, Florida featuring four theme parks, water parks, and numerous resorts." data-map="Country/USA/disney-world-location.png">
+                    <img src="Country/USA/disney-world.png" alt="Walt Disney World" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Walt Disney World</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+       <!-- Essential American Phrases -->
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="section-title" id="phrases-heading">Essential American Phrases</h2>
+        <p class="mb-4" id="phrases-intro">Planning to visit the USA? Here are some useful American English phrases and slang to help you communicate during your trip:</p>
+        
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="phrase-card">
+                    <h5>Greeting Someone</h5>
+                    <p class="mb-0"><strong>Phrase:</strong> What's up? / How's it going?</p>
+                    <p class="mb-0"><strong>Meaning:</strong> Hello, how are you?</p>
+                </div>
+                <div class="phrase-card">
+                    <h5>Showing Appreciation</h5>
+                    <p class="mb-0"><strong>Phrase:</strong> Awesome / Cool</p>
+                    <p class="mb-0"><strong>Meaning:</strong> That's great or I like that</p>
+                </div>
+                <div class="phrase-card">
+                    <h5>Asking for the Bill</h5>
+                    <p class="mb-0"><strong>Phrase:</strong> Can I get the check, please?</p>
+                    <p class="mb-0"><strong>Note:</strong> In the US, "check" refers to the restaurant bill</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="phrase-card">
+                    <h5>Giving Directions</h5>
+                    <p class="mb-0"><strong>Phrase:</strong> It's a couple of blocks down</p>
+                    <p class="mb-0"><strong>Meaning:</strong> The location is a short distance away</p>
+                </div>
+                <div class="phrase-card">
+                    <h5>Tipping Culture</h5>
+                    <p class="mb-0"><strong>Phrase:</strong> The tip is not included</p>
+                    <p class="mb-0"><strong>Note:</strong> Tipping 15-20% is customary in restaurants</p>
+                </div>
+                <div class="phrase-card">
+                    <h5>Expressing Agreement</h5>
+                    <p class="mb-0"><strong>Phrase:</strong> You bet / For sure</p>
+                    <p class="mb-0"><strong>Meaning:</strong> Yes, definitely</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Famous American Festivals -->
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="section-title" id="festivals-heading">Famous American Festivals</h2>
+        <p class="mb-4" id="festivals-intro">The USA hosts numerous vibrant festivals throughout the year. Here are some you shouldn't miss:</p>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <span class="timeline-date">January</span>
+                    <h4>Sundance Film Festival</h4>
+                    <p>The largest independent film festival in the United States, held in Park City, Utah, showcasing new work from American and international filmmakers.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <span class="timeline-date">March</span>
+                    <h4>South by Southwest (SXSW)</h4>
+                    <p>A major convergence of parallel film, interactive media, and music festivals and conferences in Austin, Texas.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <span class="timeline-date">July</span>
+                    <h4>Independence Day</h4>
+                    <p>The July 4th celebration of American independence featuring parades, concerts, barbecues, and spectacular fireworks displays across the country.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <span class="timeline-date">October</span>
+                    <h4>Halloween</h4>
+                    <p>A nationwide celebration featuring costume parties, trick-or-treating, haunted attractions, and elaborate decorations.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Travel Tips -->
+<section class="container my-5">
+    <h2 class="section-title" id="tips-heading">USA Travel Tips</h2>
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-clock me-2" style="color: var(--primary-color);"></i> Best Time to Visit</h5>
+                    <p class="card-text">The best time to visit depends on the region. Summer (June-August) is peak tourist season, but can be very hot in the South. Fall (September-November) offers beautiful foliage in the Northeast. Winter is ideal for skiing in the Rockies, while spring brings mild temperatures across most of the country.</p>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-utensils me-2" style="color: var(--primary-color);"></i> Dining Etiquette</h5>
+                    <p class="card-text">Tipping 15-20% in restaurants is standard practice. Water and bread are typically served free before meals. Portions in American restaurants are often large, and it's perfectly acceptable to ask for a "to-go box" for leftovers. Casual dress is accepted at most restaurants.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-train me-2" style="color: var(--primary-color);"></i> Transportation</h5>
+                    <p class="card-text">Public transportation varies greatly by city. Major cities like New York, Chicago, and San Francisco have extensive public transit systems. For traveling between cities, domestic flights are common. Renting a car is recommended for exploring national parks and rural areas. Ride-sharing services like Uber and Lyft are widely available.</p>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-landmark me-2" style="color: var(--primary-color);"></i> Cultural Sites</h5>
+                    <p class="card-text">Book tickets online in advance for popular attractions like Alcatraz in San Francisco or the Statue of Liberty in New York. Many museums have free admission days or pay-what-you-wish hours. National Parks often require entrance fees, but an America the Beautiful Pass provides access to all parks for one year.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Reviews Section -->
+    <section class="container my-5 text-start">
+        <h2 class="section-title" id="reviews-heading">Traveler Reviews</h2>
+        </div>
+        
+        <!-- Add review form -->
+        <div class="card mt-4 text-start">
+            <div class="card-body text-start">
+                <h5 class="card-title" id="share-experience">Share Your Experience</h5><br>
+                <form id="review-form">
+                    <div class="mb-3">
+                        <label for="reviewer-name" class="form-label" id="name-label">Name</label>
+                        <input type="text" class="form-control" id="reviewer-name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="review-rating" class="form-label" id="rating-label">Rating</label>
+                        <select class="form-select" id="review-rating" required>
+                            <option value="">Select a rating</option>
+                            <option value="5">5 - Excellent</option>
+                            <option value="4">4 - Very Good</option>
+                            <option value="3">3 - Good</option>
+                            <option value="2">2 - Fair</option>
+                            <option value="1">1 - Poor</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="review-text" class="form-label" id="review-label">Your Review</label>
+                        <textarea class="form-control" id="review-text" rows="4" required></textarea>
+                    </div>
+                    <br><button type="submit" class="btn btn-primary" id="submit-review">Submit Review</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="reviews-container" class="mt-4 mb-4"> </div>
+        
+    </section>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+        // Review form handling
+        const reviewForm = document.getElementById('review-form');
+        const reviewsContainer = document.getElementById('reviews-container');
+        
+        // Load and display existing reviews
+        function loadReviews() {
+            const reviews = JSON.parse(localStorage.getItem('unitedstate-reviews')) || [];
+            reviewsContainer.innerHTML = '';
+    
+            if (reviews.length === 0) {
+                reviewsContainer.innerHTML = '<p class="text-start">No reviews yet. Be the first to share your experience!</p>';
+                return;
+            }
+    
+            reviews.forEach((review, index) => {
+                const reviewElement = document.createElement('div');
+                reviewElement.className = 'card mb-3 text-start';
+                reviewElement.innerHTML = `
+                    <div class="card-body text-start">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">${review.name}</h5>
+                            <div class="text-warning">
+                                ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
+                            </div>
+                        </div>
+                        <p class="card-text mt-2">${review.text}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">${new Date(review.date).toLocaleDateString()}</small>
+                            <button class="btn btn-sm btn-outline-danger delete-review" data-index="${index}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                reviewsContainer.appendChild(reviewElement);
+            });
+    
+            // Add event listeners to delete buttons
+            document.querySelectorAll('.delete-review').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = this.getAttribute('data-index');
+                    deleteReview(index);
+                });
+            });
+        }
+        
+        // Delete a review - moved outside loadReviews function
+        function deleteReview(index) {
+            const reviews = JSON.parse(localStorage.getItem('unitedstate-reviews')) || [];
+            reviews.splice(index, 1);
+            localStorage.setItem('unitedstate-reviews', JSON.stringify(reviews));
+            loadReviews();
+        }
+        
+        // Handle form submission
+        if (reviewForm) {
+            reviewForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('reviewer-name').value;
+                const rating = document.getElementById('review-rating').value;
+                const text = document.getElementById('review-text').value;
+                
+                const review = {
+                    name,
+                    rating,
+                    text,
+                    date: new Date().toISOString()
+                };
+                
+                // Get existing reviews or create new array
+                const reviews = JSON.parse(localStorage.getItem('unitedstate-reviews')) || [];
+                reviews.unshift(review); // Add new review at beginning
+                
+                // Save to localStorage
+                localStorage.setItem('unitedstate-reviews', JSON.stringify(reviews));
+                
+                // Reload reviews
+                loadReviews();
+                
+                // Reset form
+                reviewForm.reset();
+            });
+        }
+        
+        // Load reviews when page loads
+        loadReviews();
+    });
+        
+    
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>World Explorer</h5>
+                    <p>Discover amazing destinations around the globe with our travel guides and tips.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/"><i class='bx bxl-facebook-square'></i></a>
+                        <a href="https://www.twitter.com/"><i class='bx bxl-twitter' ></i></i></a>
+                        <a href="https://www.instagram.com/"><i class='bx bxl-instagram-alt' ></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white">Home</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <!-- Footer content for third column -->
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
